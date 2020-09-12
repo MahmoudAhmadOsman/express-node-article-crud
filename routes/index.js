@@ -33,16 +33,16 @@ router.post("/uploads", async (req, res) => {
 
       avatar.mv("./public/images/uploads/" + avatar.name);
 
-      //send response
-      res.send({
-        status: true,
-        message: "File has been uploaded successfully!",
-        data: {
-          avatar: avatar.avatar,
-          mimetype: avatar.mimetype,
-          size: avatar.size,
-        },
-      });
+      //send response for testing
+      // res.send({
+      //   status: true,
+      //   message: "File has been uploaded successfully!",
+      //   data: {
+      //     avatar: avatar.avatar,
+      //     mimetype: avatar.mimetype,
+      //     size: avatar.size,
+      //   },
+      // });
 
       //Insert into database
       Article.create(
@@ -59,9 +59,9 @@ router.post("/uploads", async (req, res) => {
               "There was a problem adding this image to the database"
             );
           } else {
-            res.redirect("/");
             console.log("Image added to database");
             console.log(data);
+            //res.redirect("/");
           }
         }
       );
@@ -76,21 +76,33 @@ router.post("/uploads", async (req, res) => {
 //Show the data on the homepage
 
 router.get("/:id/show", function (req, res) {
-  Article.findById(req.params.id, function (err, articles) {
+  Article.findById(req.params.id, function (err, article) {
     if (err) {
       res.redirect("/");
       console.log(err);
     } else {
       res.render("show", {
         title: "Details of ",
-        article: articles,
+
+        article: article,
       });
     }
   });
 });
 
+// router.get("/:id/show", function (req, res) {
+//   Article.findById(req.params.id, function (err, article) {
+//     res.render("show", {
+//       title: "Details of ",
+//       article: article,
+//     });
+//   });
+// });
+
 //Delete
 router.delete("/:id", async (req, res) => {
+  res.send("delete");
+  return;
   let article;
   try {
     article = await Article.findById(req.params.id);

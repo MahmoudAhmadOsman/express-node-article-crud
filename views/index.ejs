@@ -23,7 +23,8 @@
                 <div class="col-md-5">
                     <% article.forEach(articles => { %>
                     <div class="thumbnail">
-                        <img src="/images/uploads/<%= articles.avatar %>" alt="<%= articles.title %> image" class="img-responsive">
+                         <a href="/<%= articles.id %>/show">
+                        <img src="/images/uploads/<%= articles.avatar %>" alt="<%= articles.title %> image" class="img-responsive"></a>
                         <div class="caption">
                             <a href="/<%= articles.id %>/show">
                                 <h2>
@@ -43,19 +44,7 @@
                                 <p><i class="fa fa-tag" aria-hidden="true"></i>
                                     <b>Category:</b><span class="tag">
                                         <%= articles.tag%></span></p>
-                                <div class="well">
-                                    <p style="float: left; margin-right: 10px;">
-                                        <a href="<%= articles.id%>" class="btn btn-info btn-sm" role="button">
-                                            <i class="fa fa-edit" aria-hidden="true"></i>&nbsp; Edit</a>
-                                    </p>
-                                    <p style="float: right;">
-                                        <form action="/<%= articles.id  %>?_method=DELETE " method="POST">
-                                            <button type="button" class="btn btn-danger btn-sm">
-                                                <i class="fa fa-trash"><b> Deleete</b></i>
-                                            </button>
-                                        </form>
-                                    </p>
-                                </div>
+                      
                         </div>
                     </div>
                     <% }) %>
