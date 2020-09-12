@@ -1,0 +1,40 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+.hnews_front_page img {
+  /* max-width: 120px; */
+  max-width: 100%;
+  height: 140px;
+  opacity: 0.6;
+}
+
+.hnews_front_page h2 {
+  color: blue;
+  /* border-bottom: 1px solid #ccc; */
+  margin-top: 5px;
+  margin-bottom: 20px;
+}
+
+.hnews_front_page span {
+  margin-right: 1px;
+  font-size: 11px;
+}
+
+.hnews_front_page .thumbnail img {
+  width: 100%;
+  height: 100%;
+}
+
+.hnews_front_page .fa-user,
+.hnews_front_page .fa-calendar-check-o,
+.hnews_front_page .fa-tag {
+  color: #ed563b;
+}
+
+.hnews_front_page .author,
+.hnews_front_page .published,
+.hnews_front_page .tag {
+  color: #b9abab;
+}

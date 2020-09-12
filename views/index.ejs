@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>
+        <%= title %>
+    </title>
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+</head>
+
+<body>
+    <div class="news_header">
+        <div class="container">
+            <h1 class="text-danger">
+                <%= title %>
+            </h1>
+            <hr />
+        </div>
+    </div>
+    <section class="hnews_front_page">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-5">
+                    <% article.forEach(articles => { %>
+                    <div class="thumbnail">
+                        <img src="/images/uploads/<%= articles.avatar %>" alt="<%= articles.title %> image" class="img-responsive">
+                        <div class="caption">
+                            <a href="/<%= articles.id %>/show">
+                                <h2>
+                                    <%= articles.title %>
+                                </h2>
+                            </a>
+                            <p>
+                                <%= articles.message %>
+                                <h5><i class="fa fa-user" aria-hidden="true"></i><b>&nbsp; Written by:</b>&nbsp; <span class="author">
+                                        <%= articles.author %> </span>
+                                </h5>
+                                <p> <i class="fa fa-calendar-check-o" aria-hidden="true"></i>
+                                    <b>Published on: </b>
+                                    <span class="published">
+                                        <%= articles.publishedDate.toLocaleDateString() %></span>
+                                </p>
+                                <p><i class="fa fa-tag" aria-hidden="true"></i>
+                                    <b>Category:</b><span class="tag">
+                                        <%= articles.tag%></span></p>
+                                <div class="well">
+                                    <p style="float: left; margin-right: 10px;">
+                                        <a href="<%= articles.id%>" class="btn btn-info btn-sm" role="button">
+                                            <i class="fa fa-edit" aria-hidden="true"></i>&nbsp; Edit</a>
+                                    </p>
+                                    <p style="float: right;">
+                                        <form action="/<%= articles.id  %>?_method=DELETE " method="POST">
+                                            <button type="button" class="btn btn-danger btn-sm">
+                                                <i class="fa fa-trash"><b> Deleete</b></i>
+                                            </button>
+                                        </form>
+                                    </p>
+                                </div>
+                        </div>
+                    </div>
+                    <% }) %>
+                </div>
+                <div class="col-md-7">
+                    <h1 class="text-info">Create New Article(s)</h1>
+                    <hr>
+                    <form action="/uploads" method="POST" enctype="multipart/form-data">
+                        <div class="form-group">
+                            <label for="title">Enter Article Title</label>
+                            <input type="text" name="title" class="form-control" placeholder="Enter an article title" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="author">Enter Author's Name</label>
+                            <input type="text" name="author" class="form-control" placeholder="Enter author name">
+                        </div>
+                        <div class="form-group">
+                            <label for="avatar">Choose an Image</label>
+                            <input type="file" name="avatar" id="avatar" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="tag">Enter Tags</label>
+                            <input type="text" name="tag" id="tag" class="form-control col-md-3" placeholder="Enter an article tag" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Enter Body</label>
+                            <textarea name="message" class="form-control" cols="30" rows="10" placeholder="Article body"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" class="btn btn-primary" value="SUBMIT">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        </div>
+    </section>
+
+</html>
