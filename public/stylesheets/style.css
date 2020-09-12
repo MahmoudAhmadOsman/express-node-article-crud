@@ -9,14 +9,12 @@ body {
   height: 140px;
   opacity: 0.6;
 }
-
 .hnews_front_page h2 {
   color: blue;
   /* border-bottom: 1px solid #ccc; */
   margin-top: 5px;
   margin-bottom: 20px;
 }
-
 .hnews_front_page span {
   margin-right: 1px;
   font-size: 11px;
