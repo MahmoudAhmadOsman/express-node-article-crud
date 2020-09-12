@@ -90,15 +90,6 @@ router.get("/:id/show", function (req, res) {
   });
 });
 
-// router.get("/:id/show", function (req, res) {
-//   Article.findById(req.params.id, function (err, article) {
-//     res.render("show", {
-//       title: "Details of ",
-//       article: article,
-//     });
-//   });
-// });
-
 //Delete
 router.delete("/:id", async (req, res) => {
   res.send("delete");

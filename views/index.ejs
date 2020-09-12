@@ -23,8 +23,15 @@
                 <div class="col-md-5">
                     <% article.forEach(articles => { %>
                     <div class="thumbnail">
-                         <a href="/<%= articles.id %>/show">
-                        <img src="/images/uploads/<%= articles.avatar %>" alt="<%= articles.title %> image" class="img-responsive"></a>
+                        <a href="/<%= articles.id %>/show">
+                            <% if (articles.avatar.length <=  0) { %>
+                                
+                           <img src="/images/uploads/no-image.png" alt="No image" class="img-responsive" style="max-width: 267px;">
+
+                            <%} else { %>
+                           <img src="/images/uploads/<%= articles.avatar %>" alt="<%= articles.title %> image" class="img-responsive">
+                            <% } %>
+                        </a>
                         <div class="caption">
                             <a href="/<%= articles.id %>/show">
                                 <h2>
@@ -44,10 +51,10 @@
                                 <p><i class="fa fa-tag" aria-hidden="true"></i>
                                     <b>Category:</b><span class="tag">
                                         <%= articles.tag%></span></p>
-                      
                         </div>
                     </div>
                     <% }) %>
+                    
                 </div>
                 <div class="col-md-7">
                     <h1 class="text-info">Create New Article(s)</h1>
