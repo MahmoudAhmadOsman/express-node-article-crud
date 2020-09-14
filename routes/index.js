@@ -1,4 +1,5 @@
 var express = require("express");
+
 const Article = require("../models/article");
 
 var router = express.Router();
@@ -11,9 +12,15 @@ router.get("/", function (req, res) {
       console.log("No DATA in the database!");
       console.log(error);
     } else {
+      // res.render("index", {
+      //   expressFlash: req.flash("success"),
+      //   sessionFlash: res.locals.sessionFlash,
+      // });
       res.render("index", {
         title: "Latest Health News",
         article: articles,
+        expressFlash: req.flash("success"),
+        sessionFlash: res.locals.sessionFlash,
       });
     }
   }).sort({ publishedDate: "desc" });
@@ -65,6 +72,7 @@ router.post("/uploads", async (req, res) => {
           }
         }
       );
+      req.flash("success", "Successfully saved!.");
       res.redirect("/");
       //////////////////////
     }
@@ -82,8 +90,7 @@ router.get("/:id/show", function (req, res) {
       console.log(err);
     } else {
       res.render("show", {
-        title: "Details of ",
-
+        title: "",
         article: article,
       });
     }

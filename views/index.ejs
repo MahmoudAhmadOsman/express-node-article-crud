@@ -57,6 +57,24 @@
                     
                 </div>
                 <div class="col-md-7">
+
+<!-- Start of showing success message -->
+ 
+<% if ( expressFlash.length > 0 ) { %>
+<div class="alert alert-success"><%= expressFlash %></div>
+<% } %>
+ 
+ 
+
+<!-- End of showing success message -->
+
+
+
+
+
+
+
+
                     <h1 class="text-info">Create New Article(s)</h1>
                     <hr>
                     <form action="/uploads" method="POST" enctype="multipart/form-data">

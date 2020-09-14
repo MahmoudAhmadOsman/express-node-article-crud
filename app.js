@@ -6,7 +6,9 @@ var cookieParser = require("cookie-parser");
 var expressLayouts = require("express-ejs-layouts");
 var partials = require("express-partials");
 var mongoose = require("mongoose");
-const fileUpload = require("express-fileupload");
+var fileUpload = require("express-fileupload");
+var session = require("express-session");
+var flash = require("connect-flash");
 
 const cors = require("cors");
 
@@ -16,6 +18,7 @@ var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
 
 var app = express();
+var sessionStore = new session.MemoryStore();
 // enable files upload
 app.use(
   fileUpload({
@@ -62,6 +65,26 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 app.use(methodOverride("_method"));
+
+//Express Session
+app.use(
+  session({
+    cookie: { maxAge: 60000 },
+    store: sessionStore,
+    secret: "secretforever",
+    saveUninitialized: true,
+    resave: true,
+  })
+);
+app.use(flash());
+
+// Custom flash middleware -- from Ethan Brown's book, 'Web Development with Node & Express'
+app.use(function (req, res, next) {
+  // if there's a flash message in the session request, make it available in the response, then delete it
+  res.locals.sessionFlash = req.session.sessionFlash;
+  delete req.session.sessionFlash;
+  next();
+});
 
 app.use("/", indexRouter);
 app.use("/users", usersRouter);
