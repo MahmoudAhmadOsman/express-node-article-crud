@@ -51,10 +51,10 @@ body {
 
 .single-info {
   background-color: #ffffff;
-  padding: 20px;
+  padding: 30px 30px;
   width: 100%;
-
-  display: inline-flex
+  display: inline-flex;
+  line-height: 30px;
 }
 
 .single-info p {
