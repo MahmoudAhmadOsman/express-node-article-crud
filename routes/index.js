@@ -9,13 +9,8 @@ var router = express.Router();
 router.get("/", function (req, res) {
   Article.find({}, function (error, articles) {
     if (error) {
-      console.log("No DATA in the database!");
       console.log(error);
     } else {
-      // res.render("index", {
-      //   expressFlash: req.flash("success"),
-      //   sessionFlash: res.locals.sessionFlash,
-      // });
       res.render("index", {
         title: "Latest Health News",
         article: articles,
@@ -26,7 +21,7 @@ router.get("/", function (req, res) {
   }).sort({ publishedDate: "desc" });
 });
 
-//Post data to the database
+//Post data to the database -- ERROR
 router.post("/uploads", async (req, res) => {
   try {
     if (!req.files) {
@@ -37,7 +32,6 @@ router.post("/uploads", async (req, res) => {
     } else {
       var data = req.body;
       let avatar = req.files.avatar;
-
       avatar.mv("./public/images/uploads/" + avatar.name);
 
       //send response for testing
@@ -55,10 +49,10 @@ router.post("/uploads", async (req, res) => {
       Article.create(
         {
           title: data.title,
-          message: data.message,
           author: data.author,
-          tag: data.tag,
           avatar: avatar.name,
+          message: data.message,
+          tag: data.tag,
         },
         function (error, data) {
           if (error) {
@@ -97,20 +91,63 @@ router.get("/:id/show", function (req, res) {
   });
 });
 
-//Delete
-router.delete("/:id", async (req, res) => {
-  res.send("delete");
-  return;
+//Edit page
+router.get("/:id/edit", function (req, res) {
+  Article.findById(req.params.id, function (err, article) {
+    res.render("edit", {
+      title: "Edit Article",
+      article: article,
+    });
+  });
+});
+
+//Update page
+
+router.put("/:id", async (req, res) => {
   let article;
   try {
     article = await Article.findById(req.params.id);
-    await article.remove();
+    (article.title = req.body.title),
+      (article.author = req.body.author),
+      (article.avatar = req.body.avatar);
+    (article.message = req.body.message),
+      (article.tag = req.body.tag),
+      await article.save();
+
     res.redirect(`/`);
   } catch {
     if (article == null) {
       res.redirect("/");
     } else {
+      res.render("/", {
+        article: article,
+        // errorMessage: "Error occured while updating",
+      });
+    }
+  }
+});
+
+//Delete Books
+
+router.delete("/:id", async (req, res) => {
+  // res.send("Delete route");
+  // return;
+  let article;
+  try {
+    article = await article.findByIdAndRemove(req.params.id);
+    await article.remove();
+
+    req.flash("success", "Successfully deleted!.");
+    res.redirect(`/`);
+  } catch {
+    if (article == null) {
       res.redirect("/");
+    } else {
+      //res.redirect("/");
+      res.send({
+        status: false,
+        message: "OOOOOPS, unable to delete!",
+      });
     }
   }
 });

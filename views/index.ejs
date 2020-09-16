@@ -20,16 +20,17 @@
     <section class="hnews_front_page">
         <div class="container">
             <div class="row">
-                <div class="col-md-5">
-                    <% article.forEach(articles => { %>
+                <div class="col-md-7">
+                    <% article.forEach(articles => { %>  
+                        
                     <div class="thumbnail">
                         <a href="/<%= articles.id %>/show">
-                            <% if (articles.avatar.length <=  0) { %>
-                                
-                           <img src="/images/uploads/no-image.png" alt="No image" class="img-responsive" style="max-width: 267px;">
+                            <% if (articles.avatar.length  <  0) { %>
+                                      
 
+                            <img src="/images/uploads/no-image.png" alt="No image" class="img-responsive" style="max-width: 150px;">
                             <%} else { %>
-                           <img src="/images/uploads/<%= articles.avatar %>" alt="<%= articles.title %> image" class="img-responsive">
+                            <img src="/images/uploads/<%= articles.avatar %>" alt="<%= articles.title %> image" class="img-responsive">
                             <% } %>
                         </a>
                         <div class="caption">
@@ -54,54 +55,45 @@
                         </div>
                     </div>
                     <% }) %>
-                    
                 </div>
-                <div class="col-md-7">
-
-<!-- Start of showing success message -->
- 
-<% if ( expressFlash.length > 0 ) { %>
-<div class="alert alert-success"><%= expressFlash %></div>
-<% } %>
- 
- 
-
-<!-- End of showing success message -->
-
-
-
-
-
-
-
-
-                    <h1 class="text-info">Create New Article(s)</h1>
-                    <hr>
-                    <form action="/uploads" method="POST" enctype="multipart/form-data">
-                        <div class="form-group">
-                            <label for="title">Enter Article Title</label>
-                            <input type="text" name="title" class="form-control" placeholder="Enter an article title" required>
+                <div class="article__form">
+                    <div class="col-md-5">
+                        <!-- Start of showing success message -->
+                        <% if ( expressFlash.length > 0 ) { %>
+                        <div class="alert alert-success">
+                            <%= expressFlash %>
                         </div>
-                        <div class="form-group">
-                            <label for="author">Enter Author's Name</label>
-                            <input type="text" name="author" class="form-control" placeholder="Enter author name">
-                        </div>
-                        <div class="form-group">
-                            <label for="avatar">Choose an Image</label>
-                            <input type="file" name="avatar" id="avatar" class="form-control">
-                        </div>
-                        <div class="form-group">
-                            <label for="tag">Enter Tags</label>
-                            <input type="text" name="tag" id="tag" class="form-control col-md-3" placeholder="Enter an article tag" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="message">Enter Body</label>
-                            <textarea name="message" class="form-control" cols="30" rows="10" placeholder="Article body"></textarea>
-                        </div>
-                        <div class="form-group">
-                            <input type="submit" class="btn btn-primary" value="SUBMIT">
-                        </div>
-                    </form>
+                        <% } %>
+                        <!-- End of showing success message -->
+                   
+                        <h1 class="text-info">Create New Article(s)</h1>
+                        <hr>
+                        <form action="/uploads" method="POST" enctype="multipart/form-data">
+                            <div class="form-group">
+                                <label for="title">Enter Article Title</label>
+                                <input type="text" name="title" class="form-control" placeholder="Enter an article title" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="author">Enter Author's Name</label>
+                                <input type="text" name="author" class="form-control" placeholder="Enter author name">
+                            </div>
+                            <div class="form-group">
+                                <label for="avatar">Choose an Image</label>
+                                <input type="file" name="avatar" id="avatar" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="tag">Enter Tags</label>
+                                <input type="text" name="tag" id="tag" class="form-control col-md-3" placeholder="Enter an article tag" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="message">Enter Body</label>
+                                <textarea name="message" class="form-control" cols="30" rows="10" placeholder="Article body"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <input type="submit" class="btn btn-primary" value="SUBMIT">
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>

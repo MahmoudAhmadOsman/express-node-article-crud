@@ -14,7 +14,7 @@ const ArticleSchema = new Schema({
 
   avatar: {
     type: String,
-    require: true,
+    require: null,
   },
   tag: {
     type: String,

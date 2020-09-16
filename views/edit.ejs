@@ -1,0 +1,71 @@
+<div class="edit__form">
+  <div class="container">
+    <h1 class="text-danger">Edit Article</h1>
+    <hr />
+    <div class="row">
+      <div class="col-md-12">
+        <form action="/uploads" method="POST" enctype="multipart/form-data">
+          <div class="form-group">
+            <label for="title">Enter Article Title</label>
+            <input
+              type="text"
+              name="title"
+              class="form-control"
+              placeholder="Enter an article title"
+              value="<%= article.title  %>"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="author">Enter Author's Name</label>
+            <input
+              type="text"
+              name="author"
+              class="form-control"
+              placeholder="Enter author name"
+              value="<%= article.author  %>"
+            />
+          </div>
+          <div class="form-group">
+            <label for="avatar">Choose an Image</label>
+            <input
+              type="file"
+              name="avatar"
+              id="avatar"
+              class="form-control"
+              value="<%= article.avatar  %>"
+            />
+          </div>
+          <div class="form-group">
+            <label for="tag">Enter Tags</label>
+            <input
+              type="text"
+              name="tag"
+              id="tag"
+              class="form-control col-md-3"
+              placeholder="Enter an article tag"
+              value="<%= article.tag  %>"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="message">Enter Body</label>
+            <textarea
+              name="message"
+              class="form-control"
+              cols="30"
+              rows="10"
+              placeholder="Article body"
+            >
+<%= article.message  %></textarea
+            >
+          </div>
+          <div class="form-group">
+            <input type="submit" class="btn btn-primary" value="SUBMIT" />
+            <a href="/" class="btn btn-danger btn-md"><b>CANCEL</b></a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

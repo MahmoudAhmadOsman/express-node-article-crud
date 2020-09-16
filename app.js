@@ -7,13 +7,13 @@ var expressLayouts = require("express-ejs-layouts");
 var partials = require("express-partials");
 var mongoose = require("mongoose");
 var fileUpload = require("express-fileupload");
+//var validationResult = require("express-validator");
 var session = require("express-session");
 var flash = require("connect-flash");
-
 const cors = require("cors");
-
 var logger = require("morgan");
 
+//Routes
 var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
 

@@ -23,14 +23,14 @@ body {
 }
 
 .hnews_front_page .thumbnail img {
-  width: 100%;
-  height: 100%;
-  opacity: .9;
-  transition: all .5s ease-in-out;
-  -webkit-transition: all .5s ease-in-out;
-  -ms-transition: all .5s ease-in-out;
-  -o-transition: all .5s ease-in-out;
-  -moz-transition: all .5s ease-in-out;
+  width: auto;
+  height: auto;
+  opacity: 0.9;
+  transition: all 0.5s ease-in-out;
+  -webkit-transition: all 0.5s ease-in-out;
+  -ms-transition: all 0.5s ease-in-out;
+  -o-transition: all 0.5s ease-in-out;
+  -moz-transition: all 0.5s ease-in-out;
 }
 
 .hnews_front_page .thumbnail img:hover {
@@ -60,4 +60,7 @@ body {
 .single-info p {
   margin-right: 20px;
   color: #6a6666;
+}
+.article__form h1 {
+  font-size: 26px;
 }
