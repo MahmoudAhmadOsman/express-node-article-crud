@@ -1,6 +1,6 @@
 var createError = require("http-errors");
 var express = require("express");
-var methodOverride = require("method-override");
+
 var path = require("path");
 var cookieParser = require("cookie-parser");
 var expressLayouts = require("express-ejs-layouts");
@@ -12,6 +12,7 @@ var session = require("express-session");
 var flash = require("connect-flash");
 const cors = require("cors");
 var logger = require("morgan");
+var methodOverride = require("method-override");
 
 //Routes
 var indexRouter = require("./routes/index");
@@ -65,6 +66,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 app.use(methodOverride("_method"));
+// app.use(methodOverride("X-HTTP-Method-Override"));
 
 //Express Session
 app.use(

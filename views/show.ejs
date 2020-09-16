@@ -36,7 +36,12 @@
             >
             <!-- <a href="#" class="btn btn-danger btn-sm"><b>Delete</b></a> -->
 
-            <form action="/<%= article.id%>?_method=DELETE" method="POST">
+            <form
+              action="/<%= article.id%>?_method=DELETE"
+              method="POST"
+              enctype="application/x-www-form-urlencoded"
+            >
+              <input type="hidden" name="_method" value="DELETE" />
               <button type="submit" class="btn btn-danger btn-sm">
                 <i class="fa fa-trash"><b> Delete</b></i>
               </button>
