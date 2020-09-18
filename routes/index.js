@@ -1,3 +1,4 @@
+const { render } = require("ejs");
 var express = require("express");
 
 const Article = require("../models/article");
@@ -150,5 +151,20 @@ router.delete("/:id", async (req, res) => {
       });
     }
   }
+});
+
+// Login route
+
+router.get("/login", (req, res) => {
+  res.render("login", {
+    title: "Login",
+  });
+});
+
+//Contact us route
+router.get("/contact", (req, res) => {
+  res.render("contact", {
+    title: "Contact Us",
+  });
 });
 module.exports = router;
