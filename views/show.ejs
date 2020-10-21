@@ -5,7 +5,7 @@
       Go back</a
     >
     <div class="col-md-8 col-md-offset-2">
-      <h1>
+      <h1 class="text-info">
         <%= article.title %>
       </h1>
       <hr />
@@ -30,23 +30,24 @@
             <b>Category:</b>
             <%= article.tag %>
           </p>
-          <div class="actions">
+          <!-- <div class="actions">
             <a href="/<%= article.id %>/edit" class="btn btn-info btn-sm"
               ><b>Edit</b></a
             >
-            <!-- <a href="#" class="btn btn-danger btn-sm"><b>Delete</b></a> -->
-
-            <form
-              action="/<%= article.id%>?_method=DELETE"
-              method="POST"
-              enctype="application/x-www-form-urlencoded"
-            >
-              <input type="hidden" name="_method" value="DELETE" />
-              <button type="submit" class="btn btn-danger btn-sm">
-                <i class="fa fa-trash"><b> Delete</b></i>
-              </button>
-            </form>
-          </div>
+   
+            <div style="display: inline-flex;">
+              <form
+                action="/<%= article.id%>?_method=DELETE"
+                method="POST"
+                enctype="application/x-www-form-urlencoded"
+              >
+                <input type="hidden" name="_method" value="DELETE" />
+                <button type="submit" class="btn btn-danger btn-sm">
+                  <i class="fa fa-trash"><b> Delete</b></i>
+                </button>
+              </form>
+            </div>
+          </div> -->
         </div>
       </div>
       <hr />

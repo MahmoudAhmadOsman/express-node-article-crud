@@ -153,6 +153,26 @@ router.delete("/:id", async (req, res) => {
   }
 });
 
+//About page
+router.get("/about", (req, res) => {
+  res.render("about", {
+    title: "About",
+  });
+});
+
+//Services
+router.get("/service", (req, res) => {
+  res.render("service", {
+    title: "Service",
+  });
+});
+//Contact us route
+router.get("/contact", (req, res) => {
+  res.render("contact", {
+    title: "Contact Us",
+  });
+});
+
 // Login route
 
 router.get("/login", (req, res) => {
@@ -161,10 +181,4 @@ router.get("/login", (req, res) => {
   });
 });
 
-//Contact us route
-router.get("/contact", (req, res) => {
-  res.render("contact", {
-    title: "Contact Us",
-  });
-});
 module.exports = router;
