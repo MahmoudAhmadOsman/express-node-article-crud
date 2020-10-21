@@ -3,13 +3,16 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "nodemon ./bin/www"
+    "start": "node app.js",
+    "build": "npm run build",
+    "herku-postbuild":"npm run build"
   },
   "dependencies": {
     "connect-flash": "^0.1.1",
     "cookie-parser": "~1.4.4",
     "cors": "^2.8.5",
     "debug": "~2.6.9",
+    "dotenv": "^8.2.0",
     "ejs": "~2.6.1",
     "express": "^4.16.4",
     "express-ejs-layouts": "^2.5.0",

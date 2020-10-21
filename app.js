@@ -1,3 +1,5 @@
+const dotenv = require("dotenv");
+dotenv.config();
 var createError = require("http-errors");
 var express = require("express");
 
@@ -19,6 +21,10 @@ var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
 
 var app = express();
+
+//1. PORT
+const PORT = process.env.PORT || 5000;
+
 var sessionStore = new session.MemoryStore();
 // enable files upload
 app.use(
@@ -31,9 +37,10 @@ app.use(
 app.use(cors());
 
 //Bring the Database
-var config = require("./config/database");
 
-mongoose.connect(config.database, {
+var config = require("./config/database");
+//3.
+mongoose.connect(process.env.MONGODB_URL || config.database, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
@@ -103,8 +110,16 @@ app.use(function (err, req, res, next) {
   res.locals.error = req.app.get("env") === "development" ? err : {};
 
   // render the error page
-  res.status(err.status || 500);
+  res.status(err.status || 5000);
   res.render("error");
 });
+
+//4
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static("/build"));
+}
+
+//2.
+app.listen(PORT, console.log(`Application is running on port ${PORT}`));
 
 module.exports = app;
