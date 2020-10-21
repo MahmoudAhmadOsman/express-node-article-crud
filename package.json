@@ -3,9 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node app.js",
-    "build": "npm run build",
-    "herku-postbuild":"npm run build"
+      "start": "node ./bin/www"
+  
   },
   "dependencies": {
     "connect-flash": "^0.1.1",
