@@ -65,6 +65,9 @@ router.post("/uploads", async (req, res) => {
             console.log("Image added to database");
             console.log(data);
             //res.redirect("/");
+            //12/3/20
+            //expressFlash: req.flash("success"),
+            //sessionFlash: res.locals.sessionFlash,
           }
         }
       );

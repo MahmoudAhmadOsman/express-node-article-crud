@@ -39,7 +39,7 @@ app.use(cors());
 //Bring the Database
 
 var config = require("./config/database");
-//3.
+
 //mongoose.connect(process.env. || config.database, {
 mongoose.connect(process.env.MONGODB_URL || config.database, {
   useNewUrlParser: true,
