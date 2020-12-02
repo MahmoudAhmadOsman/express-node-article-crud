@@ -10,7 +10,8 @@ var router = express.Router();
 router.get("/", function (req, res) {
   Article.find({}, function (error, articles) {
     if (error) {
-      console.log(error);
+      res.redirect("/");
+      //console.log(error);
     } else {
       res.render("index", {
         title: "Latest Health News",
@@ -147,7 +148,7 @@ router.delete("/:id", async (req, res) => {
       //res.redirect("/");
       res.send({
         status: false,
-        message: "OOOOOPS, unable to delete!",
+        message: "Unable to delete!",
       });
     }
   }
