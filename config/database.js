@@ -1,4 +1,5 @@
 module.exports = {
-  database: "mongodb://localhost:27017/mongodb2020",
+  database:
+    "mongodb+srv://myexpress:expresswebapp@cluster0.ux48h.mongodb.net/myexpress?retryWrites=true&w=majority",
   secret: "yoursecret",
 };
