@@ -124,7 +124,6 @@ app.use(function (err, req, res, next) {
 // if (process.env.NODE_ENV === "production") {
 //   app.use(express.static("/build"));
 // }
-
 //2.
 app.listen(PORT, console.log(`Application is running on port ${PORT}`));
 
