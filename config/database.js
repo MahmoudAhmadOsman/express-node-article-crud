@@ -1,4 +1,4 @@
 module.exports = {
-  database: MONGODB_URL,
+  database: "mongodb://localhost:27017/mongodb2020",
   secret: "yoursecret",
 };

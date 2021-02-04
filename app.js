@@ -40,8 +40,13 @@ app.use(cors());
 
 var config = require("./config/database");
 
-//mongoose.connect(process.env. || config.database, {
-mongoose.connect(process.env.MONGODB_URL || config.database, {
+//mongoose.connect(process.env.MONGODB_URL || config.database,
+// mongoose.connect(process.env. || config.database, {
+//   useNewUrlParser: true,
+//   useUnifiedTopology: true,
+// });
+
+mongoose.connect(config.database, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
@@ -116,9 +121,9 @@ app.use(function (err, req, res, next) {
 });
 
 //4
-if (process.env.NODE_ENV === "production") {
-  app.use(express.static("/build"));
-}
+// if (process.env.NODE_ENV === "production") {
+//   app.use(express.static("/build"));
+// }
 
 //2.
 app.listen(PORT, console.log(`Application is running on port ${PORT}`));
