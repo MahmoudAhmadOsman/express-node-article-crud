@@ -14,7 +14,7 @@ router.get("/", function (req, res) {
       //console.log(error);
     } else {
       res.render("index", {
-        title: "Latest Health News",
+        title: "Health News",
         article: articles,
         expressFlash: req.flash("success"),
         sessionFlash: res.locals.sessionFlash,
